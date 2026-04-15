@@ -1,15 +1,13 @@
-import { Controller, Get, Param, Query, Post, Body, Put } from '@nestjs/common';
-import { CreateProfileDto } from './dto/create-profile.dto';
+import { Controller, Body, Get, Post } from '@nestjs/common';
+import { FeeProfileDto } from './dto/fee-profile.dto';
+import { FeesService } from 'src/app.controller';
 
-
-@Controller('fees')
+@Controller('')
 export class FeesController {
+  constructor(private readonly feesService: FeesService) {}
 
-    @Post()
-    create(@Body() CreateProfileDto: CreateProfileDto) {
-        return {
-            bidAmount: CreateProfileDto.bidAmount,
-            auction: CreateProfileDto.auction
-        }
-    };
-}    
+  @Post()
+  create(@Body() dto: FeeProfileDto) {
+    return this.feesService.getFullQuote(dto);
+  }
+}

@@ -1,12 +1,33 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Injectable } from '@nestjs/common';
+import { copartCalculateTotal } from './fees/utils/copart.utils';
+import { FeeProfileDto } from './fees/dto/fee-profile.dto';
+import { estimateInlandTowing } from './fees/utils/geo.utils';
 
-@Controller()
-export class AppController {
-  constructor(private readonly appService: AppService) {}
+@Injectable()
+export class FeesService {
+  getQuote(dto: FeeProfileDto) {
+    return copartCalculateTotal({
+      bidAmount: dto.bidAmount,
+      bidType: dto.bidType,
+      bidPay: dto.bidPay,
+      bidVehicle: dto.bidVehicle,
+      gateFee: 95,
+      environmentalFee: 20,
+      titleHandelingFee: 15,
+    });
+  }
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getTowing(dto: FeeProfileDto) {
+    return estimateInlandTowing({
+      fromState: dto.fromState,
+      fromCity: dto.fromCity,
+    });
+  }
+
+  getFullQuote(dto: FeeProfileDto) {
+    return {
+      quote: this.getQuote(dto),
+      towing: this.getTowing(dto),
+    };
   }
 }
