@@ -9,9 +9,9 @@ export function copartCalculateTotal(args: CalculateTotalArgs) {
   const bidAmount =
     typeof args.bidAmount === "number" ? args.bidAmount : parseFloat(args.bidAmount)
 
-  const gateFee = args.gateFee ?? 0
-  const environmentalFee = args.environmentalFee ?? 0
-  const titleHandelingFee = args.titleHandelingFee ?? 0
+  const gateFee = 95
+  const environmentalFee = 15
+  const titleHandelingFee = 20
 
   const empty = {
     bidAmount: 0,

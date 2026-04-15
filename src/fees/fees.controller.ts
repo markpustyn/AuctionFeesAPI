@@ -6,7 +6,7 @@ import { FeesService } from 'src/app.controller';
 export class FeesController {
   constructor(private readonly feesService: FeesService) {}
 
-  @Post()
+  @Post('/fees')
   create(@Body() dto: FeeProfileDto) {
     return this.feesService.getFullQuote(dto);
   }

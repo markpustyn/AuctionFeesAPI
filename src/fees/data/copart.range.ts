@@ -3,9 +3,9 @@ import { BidPay, BidType, BidVehicle, FeeTable } from "../interface/fees.interfa
 
 export type CalculateTotalArgs = {
   bidAmount: number
-  bidType: BidType | string
-  bidPay: BidPay | string
-  bidVehicle: BidVehicle | string
+  bidType: BidType
+  bidPay: BidPay
+  bidVehicle: BidVehicle
   gateFee: number
   environmentalFee: number
   titleHandelingFee: number

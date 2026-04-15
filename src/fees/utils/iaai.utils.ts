@@ -9,9 +9,9 @@ function findRange(ranges: FeeRange[], bid: number) {
 export function iaaiCalcualteTotal(args: CalculateTotalArgs) {
   const bid = args.bidAmount
 
-  const gateFee = args.gateFee ?? 95
-  const environmentalFee = args.environmentalFee ?? 15
-  const titleHandelingFee = args.titleHandelingFee ?? 20
+  const gateFee = 95
+  const environmentalFee = 15
+  const titleHandelingFee = 20
 
   const empty = {
     bidAmount: 0,

@@ -1,10 +1,10 @@
 import { BidPay, BidType, BidVehicle, FeeTable } from "../interface/fees.interface"
 
 export type CalculateTotalArgs = {
-  bidAmount: string | number
-  bidType: BidType | string
-  bidPay: BidPay | string
-  bidVehicle: BidVehicle | string
+  bidAmount: number
+  bidType: BidType
+  bidPay: BidPay
+  bidVehicle: BidVehicle
   gateFee: number
   environmentalFee: number
   titleHandelingFee: number
@@ -39,6 +39,9 @@ export const feeTable: FeeTable = {
       { min: 8000, max: Infinity, fee: 140 },
     ],
   },
+  "non-kiosk": {
+    ranges: []
+  }
 }
 
 
