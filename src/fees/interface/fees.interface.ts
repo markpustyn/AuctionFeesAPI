@@ -1,4 +1,4 @@
-export type BidType = "online" | "kiosk" | "non-kiosk"
+export type BidType = "online" | "kiosk" | "non-kiosk" | string
 export type BidPay = "secured" | "unsecured"
 export type BidVehicle = "standard" | "heavy" | "crashedToys"
 
