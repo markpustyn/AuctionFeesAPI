@@ -1,6 +1,4 @@
-import { CalculateTotalArgs, feeTable } from "../data/copart.range"
-import { highPaymentFees, recRides, standardPaymentFees } from "../data/iaai.range"
-import { FeeRange } from "../interface/fees.interface"
+import { CalculateTotalArgs, FeeRange, feeTable, highPaymentFees, recRides, standardPaymentFees } from "../data/iaai.range.js"
 
 function findRange(ranges: FeeRange[], bid: number) {
   return ranges.find((r) => bid >= r.min && bid <= r.max) ?? null

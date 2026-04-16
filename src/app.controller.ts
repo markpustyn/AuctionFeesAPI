@@ -1,8 +1,9 @@
 import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
-import { copartCalculateTotal } from './fees/utils/copart.utils';
-import { FeeProfileDto } from './fees/dto/fee-profile.dto';
-import { estimateInlandTowing } from './fees/utils/geo.utils';
-import { iaaiCalcualteTotal } from './fees/utils/iaai.utils';
+
+import { copartCalculateTotal } from './fees/utils/copart.utils.js';
+import { FeeProfileDto } from './fees/dto/fee-profile.dto.js';
+import { iaaiCalcualteTotal } from './fees/utils/iaai.utils.js';
+import { estimateInlandTowing } from './fees/utils/geo.utils.js';
 
 @Injectable()
 export class FeesService {

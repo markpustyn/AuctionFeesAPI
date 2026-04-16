@@ -1,4 +1,5 @@
-import { BidPay, BidType, BidVehicle, FeeTable } from "../interface/fees.interface"
+import { BidPay, BidType, BidVehicle } from "../dto/fee-profile.dto.js"
+import { FeeTable } from "../interface/fees.interface.js"
 
 export type CalculateTotalArgs = {
   bidAmount: number

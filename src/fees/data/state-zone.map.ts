@@ -1,4 +1,4 @@
-import { Zone } from "../interface/zone.interface";
+import { Zone } from "../interface/zone.interface.js";
 
 
 export const STATE_ZONE: Record<string, Zone> = {

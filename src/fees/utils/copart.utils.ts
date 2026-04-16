@@ -1,5 +1,5 @@
-import { CalculateTotalArgs, crashedToysSec, crashedToysUns, feeTable, securedPaymentFees, unsecuredPaymentFees } from "../data/copart.range"
-import { FeeRange } from "../interface/fees.interface"
+import { CalculateTotalArgs, crashedToysSec, crashedToysUns, feeTable, securedPaymentFees, unsecuredPaymentFees } from "../data/copart.range.js"
+import { FeeRange } from "../interface/fees.interface.js"
 
 function findRange(ranges: FeeRange[], bid: number) {
   return ranges.find((r) => bid >= r.min && bid <= r.max) ?? null

@@ -1,6 +1,6 @@
-import { STATE_ZONE } from "../data/state-zone.map"
-import { allLocations, portLocations } from "../interface/locations.interface"
-import { Port } from "../interface/zone.interface"
+import { STATE_ZONE } from "../data/state-zone.map.js"
+import { allLocations, portLocations } from "../interface/locations.interface.js"
+import { Port } from "../interface/zone.interface.js"
 
 function pickDefaultPort(state: string): Port {
   const s = state.trim().toUpperCase()
