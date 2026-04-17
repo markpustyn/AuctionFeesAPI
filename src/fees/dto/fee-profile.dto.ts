@@ -1,4 +1,4 @@
-import { IsNumber, IsString, IsEnum} from 'class-validator';
+import { IsEnum, IsNumber, IsString } from "class-validator";
 
 
 export enum BidType {
