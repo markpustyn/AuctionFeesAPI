@@ -1,5 +1,4 @@
-import { IsEnum, IsNumber, IsString } from "class-validator";
-
+import { IsEnum, IsNumber, IsString } from 'class-validator';
 
 export enum BidType {
   ONLINE = 'online',
@@ -17,7 +16,6 @@ export enum BidVehicle {
   HEAVY = 'heavy',
   CRASHED = 'crashedToys',
 }
-
 
 export class FeeProfileDto {
   @IsNumber()

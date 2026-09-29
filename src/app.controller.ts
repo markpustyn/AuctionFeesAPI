@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { copartCalculateTotal } from './fees/utils/copart.utils';
 import { FeeProfileDto } from './fees/dto/fee-profile.dto';
 import { estimateInlandTowing } from './fees/utils/geo.utils';
@@ -11,7 +15,11 @@ export class FeesService {
       throw new BadRequestException('Request body is required');
     }
 
-    if (dto.bidAmount === undefined || dto.bidAmount === null || Number.isNaN(Number(dto.bidAmount))) {
+    if (
+      dto.bidAmount === undefined ||
+      dto.bidAmount === null ||
+      Number.isNaN(Number(dto.bidAmount))
+    ) {
       throw new BadRequestException('bidAmount must be a valid number');
     }
 
@@ -71,14 +79,14 @@ export class FeesService {
   }
 
   getTowing(dto: FeeProfileDto) {
-      if (!dto.fromState || !dto.fromCity) {
-        return null;
-      } else {
-          return estimateInlandTowing({
-          fromState: dto.fromState,
-          fromCity: dto.fromCity,
-        })
-      }
+    if (!dto.fromState || !dto.fromCity) {
+      return null;
+    } else {
+      return estimateInlandTowing({
+        fromState: dto.fromState,
+        fromCity: dto.fromCity,
+      });
+    }
   }
 
   getFullQuote(dto: FeeProfileDto) {
