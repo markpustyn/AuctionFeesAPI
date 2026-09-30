@@ -17,6 +17,11 @@ export enum BidVehicle {
   CRASHED = 'crashedToys',
 }
 
+export enum BidVolume {
+  LOW = 'low',
+  HIGH = 'high',
+}
+
 export class FeeProfileDto {
   @IsNumber()
   bidAmount: number;
@@ -29,6 +34,9 @@ export class FeeProfileDto {
 
   @IsEnum(BidType)
   bidType: BidType;
+
+  @IsEnum(BidVolume)
+  volume: BidVolume;
 
   @IsEnum(BidPay)
   bidPay: BidPay;

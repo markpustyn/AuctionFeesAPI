@@ -1,16 +1,23 @@
-import { BidPay, BidType, BidVehicle, FeeTable } from "../interface/fees.interface"
+import {
+  BidPay,
+  BidType,
+  BidVehicle,
+  FeeTable,
+} from '../interface/fees.interface';
 
 export type CalculateTotalArgs = {
-  bidAmount: string | number
-  bidType: BidType | string
-  bidPay: BidPay | string
-  bidVehicle: BidVehicle | string
-  gateFee: number
-  environmentalFee: number
-  titleHandelingFee: number
-}
+  bidAmount: string | number;
+  bidType: BidType;
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+  bidPay: BidPay | string;
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+  bidVehicle: BidVehicle | string;
+  gateFee: number;
+  environmentalFee: number;
+  titleHandelingFee: number;
+};
 
-export type FeeRange = { min: number; max: number; fee: number }
+export type FeeRange = { min: number; max: number; fee: number };
 
 export const feeTable: FeeTable = {
   online: {
@@ -39,8 +46,7 @@ export const feeTable: FeeTable = {
       { min: 8000, max: Infinity, fee: 140 },
     ],
   },
-}
-
+};
 
 export const standardPaymentFees = {
   ranges: [
@@ -84,9 +90,10 @@ export const standardPaymentFees = {
     { min: 11500.0, max: 11999.99, fee: 860.0 },
     { min: 12000.0, max: 12499.99, fee: 875.0 },
     { min: 12500.0, max: 14999.99, fee: 890.0 },
+    // 15k+ is 6% of sale price
     { min: 15000.0, max: Infinity, fee: 1000.0 },
   ],
-}
+};
 
 export const highPaymentFees = {
   ranges: [
@@ -128,9 +135,10 @@ export const highPaymentFees = {
     { min: 8000.0, max: 8499.99, fee: 925.0 },
     { min: 8500.0, max: 9999.99, fee: 945.0 },
     { min: 10000.0, max: 14999.99, fee: 1000.0 },
+    // 15k+ is 7.5% of sale price
     { min: 15000.0, max: Infinity, fee: 1000.0 },
   ],
-}
+};
 
 export const recRides = {
   ranges: [
@@ -163,4 +171,4 @@ export const recRides = {
     { min: 9000.0, max: 9999.99, fee: 975.0 },
     { min: 10000.0, max: Infinity, fee: 990.0 },
   ],
-}
+};

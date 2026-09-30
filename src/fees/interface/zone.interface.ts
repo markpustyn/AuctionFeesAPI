@@ -11,9 +11,9 @@ export interface InlandTowingInput {
 }
 
 export type Location = {
-  city: string
-  state: string
-  lat: number
-  lng: number
-  price?: number
-}
+  city: string;
+  state: string;
+  lat: number;
+  lng: number;
+  price?: number;
+};

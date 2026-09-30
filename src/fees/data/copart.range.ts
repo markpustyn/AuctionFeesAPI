@@ -1,15 +1,23 @@
-import { BidPay, BidType, BidVehicle, FeeTable } from "../interface/fees.interface"
-
+import {
+  BidPay,
+  BidType,
+  BidVehicle,
+  FeeTable,
+} from '../interface/fees.interface';
 
 export type CalculateTotalArgs = {
-  bidAmount: number
-  bidType: BidType | string
-  bidPay: BidPay | string
-  bidVehicle: BidVehicle | string
-  gateFee: number
-  environmentalFee: number
-  titleHandelingFee: number
-}
+  volume: string;
+  towingTotal: number;
+  bidAmount: number;
+  bidType: BidType;
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+  bidPay: BidPay | string;
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+  bidVehicle: BidVehicle | string;
+  gateFee: number;
+  environmentalFee: number;
+  titleHandelingFee: number;
+};
 
 export const feeTable: FeeTable = {
   online: {
@@ -25,8 +33,10 @@ export const feeTable: FeeTable = {
       { min: 8000, max: Infinity, fee: 160 },
     ],
   },
-  kiosk: { ranges: [{ min: 0, max: Infinity, fee: 0 }] },
-  "non-kiosk": {
+  kiosk: {
+    ranges: [{ min: 0, max: Infinity, fee: 0 }],
+  },
+  'non-kiosk': {
     ranges: [
       { min: 0, max: 99.99, fee: 0 },
       { min: 100, max: 499.99, fee: 40 },
@@ -39,7 +49,7 @@ export const feeTable: FeeTable = {
       { min: 8000, max: Infinity, fee: 140 },
     ],
   },
-}
+};
 
 export const securedPaymentFees = {
   ranges: [
@@ -87,9 +97,9 @@ export const securedPaymentFees = {
     { min: 11500, max: 11999.99, fee: 1000.0 },
     { min: 12000, max: 12499.99, fee: 1000.0 },
     { min: 12500, max: 14999.99, fee: 1000.0 },
-    { min: 15000, max: Infinity, fee: 0.075 }, // percent
+    { min: 15000, max: Infinity, fee: 0.075 }, // 7.50 percent
   ],
-}
+};
 
 export const crashedToysUns = {
   ranges: [
@@ -130,9 +140,9 @@ export const crashedToysUns = {
     { min: 7500, max: 7999.99, fee: 1850.0 },
     { min: 8000, max: 8999.99, fee: 1950.0 },
     { min: 9000, max: 9999.99, fee: 2050.0 },
-    { min: 10000, max: Infinity, fee: 0.205 }, // percent
+    { min: 10000, max: Infinity, fee: 0.205 }, // 20.5 percent of bid
   ],
-}
+};
 
 export const crashedToysSec = {
   ranges: [
@@ -173,9 +183,9 @@ export const crashedToysSec = {
     { min: 7500, max: 7999.99, fee: 1470.0 },
     { min: 8000, max: 8999.99, fee: 1500.0 },
     { min: 9000, max: 9999.99, fee: 1525.0 },
-    { min: 10000, max: Infinity, fee: 0.155 }, // percent
+    { min: 10000, max: Infinity, fee: 0.155 }, // 15.5 percent of bid
   ],
-}
+};
 
 export const unsecuredPaymentFees = {
   unsecured: {
@@ -224,7 +234,107 @@ export const unsecuredPaymentFees = {
       { min: 11500, max: 11999.99, fee: 1400.0 },
       { min: 12000, max: 12499.99, fee: 1400.0 },
       { min: 12500, max: 14999.99, fee: 1400.0 },
-      { min: 15000, max: Infinity, fee: 0.125 }, // percent
+      { min: 15000, max: Infinity, fee: 0.125 }, // 12.50 percent of bid
     ],
   },
-}
+};
+
+export const highVolumeSecuredPaymentFees = {
+  ranges: [
+    { min: 0, max: 49.99, fee: 1.0 },
+    { min: 50, max: 99.99, fee: 1.0 },
+    { min: 100, max: 199.99, fee: 25.0 },
+    { min: 200, max: 299.99, fee: 60.0 },
+    { min: 300, max: 349.99, fee: 85.0 },
+    { min: 350, max: 399.99, fee: 100.0 },
+    { min: 400, max: 449.99, fee: 125.0 },
+    { min: 450, max: 499.99, fee: 135.0 },
+    { min: 500, max: 549.99, fee: 145.0 },
+    { min: 550, max: 599.99, fee: 155.0 },
+    { min: 600, max: 699.99, fee: 170.0 },
+    { min: 700, max: 799.99, fee: 195.0 },
+    { min: 800, max: 899.99, fee: 215.0 },
+    { min: 900, max: 999.99, fee: 230.0 },
+    { min: 1000, max: 1199.99, fee: 250.0 },
+    { min: 1200, max: 1299.99, fee: 270.0 },
+    { min: 1300, max: 1399.99, fee: 285.0 },
+    { min: 1400, max: 1499.99, fee: 300.0 },
+    { min: 1500, max: 1599.99, fee: 315.0 },
+    { min: 1600, max: 1699.99, fee: 330.0 },
+    { min: 1700, max: 1799.99, fee: 350.0 },
+    { min: 1800, max: 1999.99, fee: 370.0 },
+    { min: 2000, max: 2399.99, fee: 390.0 },
+    { min: 2400, max: 2499.99, fee: 425.0 },
+    { min: 2500, max: 2999.99, fee: 460.0 },
+    { min: 3000, max: 3499.99, fee: 505.0 },
+    { min: 3500, max: 3999.99, fee: 555.0 },
+    { min: 4000, max: 4499.99, fee: 600.0 },
+    { min: 4500, max: 4999.99, fee: 625.0 },
+    { min: 5000, max: 5499.99, fee: 650.0 },
+    { min: 5500, max: 5999.99, fee: 675.0 },
+    { min: 6000, max: 6499.99, fee: 700.0 },
+    { min: 6500, max: 6999.99, fee: 720.0 },
+    { min: 7000, max: 7499.99, fee: 755.0 },
+    { min: 7500, max: 7999.99, fee: 775.0 },
+    { min: 8000, max: 8499.99, fee: 800.0 },
+    { min: 8500, max: 8999.99, fee: 820.0 },
+    { min: 9000, max: 9999.99, fee: 820.0 },
+    { min: 10000, max: 10499.99, fee: 850.0 },
+    { min: 10500, max: 10999.99, fee: 850.0 },
+    { min: 11000, max: 11499.99, fee: 850.0 },
+    { min: 11500, max: 11999.99, fee: 860.0 },
+    { min: 12000, max: 12499.99, fee: 875.0 },
+    { min: 12500, max: 14999.99, fee: 890.0 },
+    { min: 15000, max: Infinity, fee: 900.0 }, // 6% of bid
+  ],
+};
+
+export const highVolumeUnsecuredPaymentFees = {
+  ranges: [
+    { min: 0, max: 49.99, fee: 27.5 },
+    { min: 50, max: 99.99, fee: 40.0 },
+    { min: 100, max: 199.99, fee: 65.0 },
+    { min: 200, max: 299.99, fee: 100.0 },
+    { min: 300, max: 349.99, fee: 122.5 },
+    { min: 350, max: 399.99, fee: 137.5 },
+    { min: 400, max: 449.99, fee: 145.0 },
+    { min: 450, max: 499.99, fee: 155.0 },
+    { min: 500, max: 549.99, fee: 170.0 },
+    { min: 550, max: 599.99, fee: 175.0 },
+    { min: 600, max: 699.99, fee: 200.0 },
+    { min: 700, max: 799.99, fee: 232.5 },
+    { min: 800, max: 899.99, fee: 257.5 },
+    { min: 900, max: 999.99, fee: 280.0 },
+    { min: 1000, max: 1199.99, fee: 310.0 },
+    { min: 1200, max: 1299.99, fee: 340.0 },
+    { min: 1300, max: 1399.99, fee: 352.5 },
+    { min: 1400, max: 1499.99, fee: 370.0 },
+    { min: 1500, max: 1599.99, fee: 385.0 },
+    { min: 1600, max: 1699.99, fee: 405.0 },
+    { min: 1700, max: 1799.99, fee: 427.5 },
+    { min: 1800, max: 1999.99, fee: 455.0 },
+    { min: 2000, max: 2399.99, fee: 487.5 },
+    { min: 2400, max: 2499.99, fee: 525.0 },
+    { min: 2500, max: 2999.99, fee: 580.0 },
+    { min: 3000, max: 3499.99, fee: 690.0 },
+    { min: 3500, max: 3999.99, fee: 737.5 },
+    { min: 4000, max: 4499.99, fee: 765.0 },
+    { min: 4500, max: 4999.99, fee: 790.0 },
+    { min: 5000, max: 5499.99, fee: 890.0 },
+    { min: 5500, max: 5999.99, fee: 925.0 },
+    { min: 6000, max: 6499.99, fee: 950.0 },
+    { min: 6500, max: 6999.99, fee: 975.0 },
+    { min: 7000, max: 7499.99, fee: 1015.0 },
+    { min: 7500, max: 7999.99, fee: 1120.0 },
+    { min: 8000, max: 8499.99, fee: 1147.5 },
+    { min: 8500, max: 8999.99, fee: 1175.0 },
+    { min: 9000, max: 9999.99, fee: 1175.0 },
+    { min: 10000, max: 10499.99, fee: 1250.0 },
+    { min: 10500, max: 10999.99, fee: 1250.0 },
+    { min: 11000, max: 11499.99, fee: 1250.0 },
+    { min: 11500, max: 11999.99, fee: 1260.0 },
+    { min: 12000, max: 12499.99, fee: 1270.0 },
+    { min: 12500, max: 14999.99, fee: 1285.0 },
+    { min: 15000, max: Infinity, fee: 1300.0 }, // 11% of bid
+  ],
+};

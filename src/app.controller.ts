@@ -53,6 +53,8 @@ export class FeesService {
           gateFee: 95,
           environmentalFee: 20,
           titleHandelingFee: 15,
+          volume: dto.volume,
+          towingTotal: 0,
         });
       }
 
@@ -65,6 +67,8 @@ export class FeesService {
           gateFee: 95,
           environmentalFee: 20,
           titleHandelingFee: 15,
+          volume: '',
+          towingTotal: 0,
         });
       }
 
