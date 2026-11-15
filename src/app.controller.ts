@@ -64,7 +64,7 @@ export class FeesService {
           bidType: dto.bidType,
           bidPay: dto.bidPay,
           bidVehicle: dto.bidVehicle,
-          gateFee: 95,
+          gateFee: 105,
           environmentalFee: 20,
           titleHandelingFee: 15,
           volume: '',
